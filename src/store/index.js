@@ -30,6 +30,10 @@ export default new Vuex.Store({
       let res = await _sandbox.get("blogs");
       commit("setAllBlogs", res.data.data);
     },
+    async getActiveBlog({ commit, dispatch }, id) {
+      let res = await _sandbox.get("blogs/" + id);
+      commit("setActiveBlog", res.data.data);
+    },
     async createBlog({ commit, dispatch }, blog) {
       let res = await _sandbox.post("blogs", blog);
       commit("addBlog", res.data.data);

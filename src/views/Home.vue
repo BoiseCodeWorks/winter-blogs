@@ -39,8 +39,8 @@
     </form>
 
     <ul>
-      <li v-for="blog in blogs" :key="blog.id">
-        <router-link :to="{ name: 'blog', params: { id: blog.id } }">{{
+      <li v-for="blog in blogs" :key="blog._id">
+        <router-link :to="{ name: 'blog', params: { id: blog._id } }">{{
           blog.title
         }}</router-link>
       </li>
