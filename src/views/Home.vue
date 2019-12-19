@@ -37,7 +37,14 @@
       </div>
       <button class="btn btn-outline-success" type="submit">Add Blog</button>
     </form>
-    {{ blogs }}
+
+    <ul>
+      <li v-for="blog in blogs" :key="blog.id">
+        <router-link :to="{ name: 'blog', params: { id: blog.id } }">{{
+          blog.title
+        }}</router-link>
+      </li>
+    </ul>
   </div>
 </template>
 <script>
