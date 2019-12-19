@@ -18,11 +18,15 @@
       <input v-model="newBlog.img" type="text" placeholder="Optional Image" />
       <button type="submit">Add Blog</button>
     </form>
+    {{ blogs }}
   </div>
 </template>
 <script>
 export default {
   name: "home",
+  mounted() {
+    this.$store.dispatch("getAllBlogs");
+  },
   data() {
     return {
       newBlog: {
@@ -41,6 +45,11 @@ export default {
         body: "",
         img: ""
       };
+    }
+  },
+  computed: {
+    blogs() {
+      return this.$store.state.blogs;
     }
   }
 };

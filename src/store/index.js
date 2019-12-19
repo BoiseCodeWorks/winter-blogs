@@ -25,6 +25,15 @@ export default new Vuex.Store({
       state.blogs.push(data);
     }
   },
-  actions: {},
+  actions: {
+    async getAllBlogs({ commit, dispatch }) {
+      let res = await _sandbox.get("blogs");
+      commit("setAllBlogs", res.data.data);
+    },
+    async createBlog({ commit, dispatch }, blog) {
+      let res = await _sandbox.post("blogs", blog);
+      commit("addBlog", res.data.data);
+    }
+  },
   modules: {}
 });
