@@ -31,6 +31,17 @@ export default {
         img: ""
       }
     };
+  },
+  methods: {
+    createBlog() {
+      let blog = { ...this.newBlog };
+      this.$store.dispatch("createBlog", blog);
+      this.newBlog = {
+        title: "",
+        body: "",
+        img: ""
+      };
+    }
   }
 };
 </script>
