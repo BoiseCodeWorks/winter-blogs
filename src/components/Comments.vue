@@ -14,6 +14,9 @@
 <script>
 export default {
   name: "Comments",
+  mounted() {
+    this.$store.dispatch("getComments", this.$route.params.id);
+  },
   data() {
     return {
       comment: ""

@@ -12,7 +12,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     blogs: [],
-    activeBlog: {}
+    activeBlog: {},
+    comments: []
   },
   mutations: {
     setAllBlogs(state, data) {
@@ -23,6 +24,12 @@ export default new Vuex.Store({
     },
     addBlog(state, data) {
       state.blogs.push(data);
+    },
+    setComments(state, data) {
+      state.comments = data;
+    },
+    addComment(state, data) {
+      state.comments.push(data);
     }
   },
   actions: {
@@ -37,6 +44,14 @@ export default new Vuex.Store({
     async createBlog({ commit, dispatch }, blog) {
       let res = await _sandbox.post("blogs", blog);
       commit("addBlog", res.data.data);
+    },
+    async createComment({ commit, dispatch }, comment) {
+      let res = await _sandbox.post("comments", comment);
+      commit("addComment", res.data.data);
+    },
+    async getComments({ commit, dispatch }, id) {
+      let res = await _sandbox.get("blogs/" + id + "/comments");
+      commit("setComments", res.data.data);
     }
   },
   modules: {}
