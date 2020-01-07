@@ -13,12 +13,30 @@ const routes = [
   {
     path: "/blogs/:id",
     name: "blog",
-    component: Blog
+    component: Blog,
+    beforeEnter: (to, from, next) => {
+      let confirmed = window.confirm('You have unsaved changes are you sure you want to leave this page?')
+      next(confirmed)
+    }
+  },
+  {
+    path: '*',
+    redirect: '/'
   }
 ];
 
 const router = new VueRouter({
   routes
 });
+
+// router.beforeEach((to, from, next) => {
+//   debugger
+//   if (to.name == 'blog') {
+// let confirmed = window.confirm('You have unsaved changes are you sure you want to leave this page?')
+// next(confirmed)
+//     return
+//   }
+//   next()
+// })
 
 export default router;

@@ -40,9 +40,11 @@
 
     <ul>
       <li v-for="blog in blogs" :key="blog._id">
-        <router-link :to="{ name: 'blog', params: { id: blog._id } }">{{
+        <router-link :to="{ name: 'blog', params: { id: blog._id } }">
+          {{
           blog.title
-        }}</router-link>
+          }}
+        </router-link>
       </li>
     </ul>
   </div>
